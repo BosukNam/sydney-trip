@@ -841,7 +841,7 @@ body {
         <input type="checkbox" data-key="c_golden"><label>Golden Century 예약 (4/9 저녁)</label>
       </div>
       <div class="check-item" onclick="toggleCheck(this)">
-        <input type="checkbox" data-key="c7"><label>Caminetto 예약 (4/10 저녁)</label>
+        <input type="checkbox" data-key="c7"><label>Zia Pina Pizzeria 예약 (4/10 마지막밤 저녁)</label>
       </div>
     </div>
 
@@ -1457,23 +1457,29 @@ body {
       <div class="restaurant-cards">
         <div class="resto-card recommended">
           <span class="resto-badge">추천</span>
-          <div class="resto-name"><a href="https://www.google.com/maps/search/Caminetto+The+Rocks+Sydney" target="_blank" class="place-link">Caminetto</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Caminetto+The+Rocks+Sydney" alt="QR" class="qr-inline"></div>
-          <div class="resto-price">$30~50/인</div>
-          <div class="resto-note">이탈리안 고급 레스토랑 <span class="reserve-tag">예약필수</span></div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Zia+Pina+Pizzeria+The+Rocks+Sydney" target="_blank" class="place-link">Zia Pina Pizzeria</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Zia+Pina+Pizzeria+The+Rocks+Sydney" alt="QR" class="qr-inline"></div>
+          <div class="resto-price">$25~40/인 (세트 $40/인)</div>
+          <div class="resto-note">더 록스 가족경영 이탈리안. 화덕피자, 파스타, 안티파스토. 10명 세트메뉴 가능 <span class="reserve-tag">예약필수</span></div>
         </div>
         <div class="resto-card">
           <span class="resto-alt-badge">대안</span>
           <div class="resto-name"><a href="https://www.google.com/maps/search/Winghaus+Circular+Quay+Sydney" target="_blank" class="place-link">Winghaus</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Winghaus+Circular+Quay+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$20~30/인</div>
-          <div class="resto-note">치킨 윙 전문, 캐주얼</div>
+          <div class="resto-note">치킨 윙 전문, 캐주얼 패밀리팩</div>
         </div>
       </div>
-      <div style="margin-top:8px;">
-        <div class="resto-card" style="max-width:calc(50% - 5px);">
+      <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+        <div class="resto-card" style="flex:1; min-width:200px;">
           <span class="resto-alt-badge">대안 2</span>
           <div class="resto-name"><a href="https://www.google.com/maps/search/El+Camino+Cantina+The+Rocks+Sydney" target="_blank" class="place-link">El Camino Cantina</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/El+Camino+Cantina+The+Rocks+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$20~35/인</div>
-          <div class="resto-note">멕시칸, 타코/부리또</div>
+          <div class="resto-note">멕시칸, 타코/부리또, 아이들 재미</div>
+        </div>
+        <div class="resto-card" style="flex:1; min-width:200px; opacity:0.7;">
+          <span class="resto-alt-badge" style="background:#9E9E9E;">휴업중</span>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Caminetto+The+Rocks+Sydney" target="_blank" class="place-link" style="color:#999;">Caminetto</a></div>
+          <div class="resto-price" style="color:#999;">$30~50/인</div>
+          <div class="resto-note" style="color:#999;">리노베이션 임시 휴업 중 (재오픈 미정). 오픈 시 강추!</div>
         </div>
       </div>
     </div>
@@ -1617,10 +1623,28 @@ body {
       <div class="timeline-time">⛪ 선택</div>
       <div class="timeline-title">한인교회 주일예배 (희망 시)</div>
       <div class="timeline-desc">
-        <strong>시드니 한인장로교회 (KPCS)</strong> — 59 Arthur St, Strathfield | 9:00 / 11:00 예배<br>
-        <strong>시드니한인연합교회</strong> — 98 Albert Rd, Strathfield | 일요일 예배<br>
-        <strong>시드니 코너스톤 한인교회</strong> — Chatswood 지역<br>
-        <span style="font-size:0.8rem; color:var(--text-light);">* Strathfield까지 기차 약 25분. 참석 시 오전 일정 조정 필요</span>
+        <div style="margin-bottom:10px;">
+          <a href="https://www.google.com/maps/search/Korean+Presbyterian+Church+59+Arthur+St+Strathfield" target="_blank" class="place-link"><strong>시드니 한인장로교회 (KPCS)</strong></a>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=https://www.google.com/maps/search/Korean+Presbyterian+Church+59+Arthur+St+Strathfield" alt="QR" class="qr-inline"><br>
+          📍 59 Arthur St, Strathfield NSW 2135<br>
+          ⏰ <strong>1부 예배 오전 9:00</strong> / <strong>2부 예배 오전 11:00</strong><br>
+          🚆 Museum역 → Strathfield역 기차 약 25분
+        </div>
+        <div style="margin-bottom:10px;">
+          <a href="https://www.google.com/maps/search/Sydney+Korean+Uniting+Church+98+Albert+Rd+Strathfield" target="_blank" class="place-link"><strong>시드니한인연합교회</strong></a>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=https://www.google.com/maps/search/Sydney+Korean+Uniting+Church+98+Albert+Rd+Strathfield" alt="QR" class="qr-inline"><br>
+          📍 98-102 Albert Rd, Strathfield NSW 2135<br>
+          ⏰ 주일예배 (시간은 <a href="https://www.sydneykoruc.org/" target="_blank" class="place-link">공식 홈페이지</a> 확인)<br>
+          🚆 KPCS와 같은 Strathfield 지역, 도보 10분 거리
+        </div>
+        <div style="margin-bottom:10px;">
+          <a href="https://www.google.com/maps/search/Cornerstone+Korean+Community+Church+Forestville+Sydney" target="_blank" class="place-link"><strong>시드니 코너스톤 한인교회</strong></a>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=https://www.google.com/maps/search/Cornerstone+Korean+Community+Church+Forestville+Sydney" alt="QR" class="qr-inline"><br>
+          📍 Forestville, Sydney 북부 (시내에서 버스 약 40분)<br>
+          ⏰ 현장 + 온라인 예배 병행 (<a href="https://www.ckccsydney.org/" target="_blank" class="place-link">공식 홈페이지</a> 확인)<br>
+          💡 시내에서 멀어 Strathfield 교회 추천
+        </div>
+        <span style="font-size:0.8rem; color:var(--text-light);">* 1부 예배(9:00) 참석 시: 호텔 7:30 출발 → Strathfield 8:00 도착 → 예배 후 10:30 시드니대 이동 가능</span>
       </div>
     </div>
     <div class="timeline-item attraction">
@@ -1870,7 +1894,7 @@ body {
       <li><strong><a href="https://www.google.com/maps/search/SEA+LIFE+Sydney+Aquarium" target="_blank" class="place-link">씨라이프 아쿠아리움</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/SEA+LIFE+Sydney+Aquarium" alt="QR" class="qr-inline"></strong> &#8212; D3 온라인 예매 (할인)</li>
       <li><strong>Golden Century</strong> &#8212; D4 저녁, 8명, 18:30 (원탁 요청)</li>
       <li><strong>타롱가 동물원 콤보</strong> &#8212; D5 온라인 예매 (페리+입장)</li>
-      <li><strong>Caminetto</strong> &#8212; D5 저녁, 8명, 17:00</li>
+      <li><strong>Zia Pina Pizzeria</strong> &#8212; D5 마지막밤 저녁, 10명, 18:00 (세트메뉴 문의)</li>
     </ul>
   </div>
 

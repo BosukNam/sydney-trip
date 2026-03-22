@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>호주 시드니 가족여행 통합 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 18px; scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #F5F0E8;
+  color: #2D2D2D;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ===== COLOR PALETTE ===== */
+:root {
+  --primary: #1B3A2D;
+  --accent: #2E7D5B;
+  --accent-light: #4CAF7D;
+  --bg: #F5F0E8;
+  --bg-card: #FFFFFF;
+  --bg-card-alt: #F0EBE0;
+  --text: #2D2D2D;
+  --text-light: #6B6B6B;
+  --border: #D4C9B8;
+  --cost-bg: #E8F5E9;
+  --cost-header: #1B5E20;
+  --warning: #E65100;
+  --info: #0277BD;
+  --track-a: #E91E63;
+  --track-b: #1565C0;
+  --shadow: 0 2px 12px rgba(27,58,45,0.10);
+  --shadow-lg: 0 4px 24px rgba(27,58,45,0.15);
+}
+
+/* ===== SLIDE CONTAINER ===== */
+.slides-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  min-width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  scroll-snap-align: start;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slide-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 24px 100px 24px;
+}
+
+/* ===== HEADER ===== */
+.slide-header {
+  background: var(--primary);
+  color: white;
+  padding: 18px 24px;
+  border-radius: 0 0 20px 20px;
+  margin: 0 -24px 24px -24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow-lg);
+}
+.slide-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.slide-header .subtitle {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  font-weight: 300;
+}
+.day-badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.day-date {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* ===== NAVIGATION ===== */
+.nav-arrows {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1000;
+  background: rgba(27,58,45,0.92);
+  padding: 10px 20px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg);
+}
+.nav-btn {
+  background: none;
+  border: 2px solid rgba(255,255,255,0.4);
+  color: white;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.nav-btn:hover { background: var(--accent); border-color: var(--accent); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
+.nav-btn:disabled:hover { background: none; border-color: rgba(255,255,255,0.4); }
+.slide-indicator {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.card-alt {
+  background: var(--bg-card-alt);
+}
+.card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.card h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.card p, .card li {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ===== TIMELINE ===== */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+  border-radius: 3px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 18px;
+  padding-bottom: 2px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.timeline-item.meal::before { background: #FF6B35; box-shadow: 0 0 0 2px #FF6B35; }
+.timeline-item.attraction::before { background: #2196F3; box-shadow: 0 0 0 2px #2196F3; }
+.timeline-time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+.timeline-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.timeline-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 2px;
+  line-height: 1.6;
+}
+
+/* ===== RESTAURANT CARDS ===== */
+.restaurant-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+.resto-card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.resto-card.recommended {
+  border: 2px solid var(--accent);
+}
+.resto-badge {
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.resto-alt-badge {
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  background: var(--text-light);
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.resto-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.resto-price {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.resto-note {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* ===== COST TABLE ===== */
+.cost-section {
+  background: var(--cost-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #A5D6A7;
+}
+.cost-section h3 {
+  color: var(--cost-header);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.cost-table th {
+  background: var(--cost-header);
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.cost-table th:last-child { text-align: right; }
+.cost-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #C8E6C9;
+}
+.cost-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+  color: var(--cost-header);
+}
+.cost-table tr:last-child td {
+  border-bottom: none;
+}
+.cost-total {
+  background: var(--cost-header);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ===== MAP CONTAINER ===== */
+.map-container {
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--border);
+}
+.map-container iframe {
+  width: 100%;
+  height: 280px;
+  border: none;
+}
+.map-label {
+  background: var(--primary);
+  color: white;
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  font-weight: 500;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.check-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.check-card h4 {
+  font-size: 0.95rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent-light);
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.check-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.check-item label {
+  font-size: 0.82rem;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.check-item.checked label {
+  text-decoration: line-through;
+  color: var(--text-light);
+}
+
+/* ===== OVERVIEW CARDS ===== */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.overview-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.overview-icon {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+.overview-label {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.overview-value {
+  font-size: 0.95rem;
+  color: var(--primary);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ===== MART CARDS ===== */
+.mart-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.mart-card.best {
+  border: 2px solid var(--accent);
+}
+.mart-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+.mart-info {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.mart-detail {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+.mart-detail strong {
+  color: var(--text);
+}
+
+/* ===== TRACK SPLIT ===== */
+.track-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.track {
+  border-radius: 14px;
+  padding: 18px;
+}
+.track-a {
+  background: #FCE4EC;
+  border: 2px solid var(--track-a);
+}
+.track-b {
+  background: #E3F2FD;
+  border: 2px solid var(--track-b);
+}
+.track h3 {
+  font-size: 1rem;
+}
+.track-a h3 { color: var(--track-a); }
+.track-b h3 { color: var(--track-b); }
+
+/* ===== TITLE SLIDE ===== */
+.title-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px 24px;
+}
+.title-slide h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.title-slide .title-sub {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.title-flag {
+  font-size: 3.5rem;
+  margin-bottom: 14px;
+}
+
+/* ===== INFO TAGS ===== */
+.info-tag {
+  display: inline-block;
+  background: rgba(46,125,91,0.1);
+  color: var(--accent);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin: 2px;
+  font-weight: 500;
+}
+.info-tag.warning {
+  background: rgba(230,81,0,0.1);
+  color: var(--warning);
+}
+.info-tag.info {
+  background: rgba(2,119,189,0.1);
+  color: var(--info);
+}
+
+/* ===== SUMMARY TABLE ===== */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-top: 12px;
+}
+.summary-table th {
+  background: var(--primary);
+  color: white;
+  padding: 10px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+.summary-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.summary-table tr:nth-child(even) { background: #f9f7f2; }
+.summary-table .grand-total {
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.summary-table .grand-total td { border-bottom: none; color: white; }
+
+/* ===== SECTION DIVIDER ===== */
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 24px 0 12px 0;
+  padding-bottom: 6px;
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+}
+
+/* ===== EMERGENCY CARD ===== */
+.emergency-card {
+  background: #FFF3E0;
+  border: 2px solid #FF9800;
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 16px;
+}
+.emergency-card h4 {
+  color: #E65100;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.emergency-card li {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  html { font-size: 16px; }
+  .slide-inner { padding: 16px 16px 120px 16px; }
+  .slide-header { margin: 0 -16px 20px -16px; padding: 14px 16px; }
+  .slide-header h1 { font-size: 1.3rem; }
+  .checklist-grid { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: 1fr 1fr; }
+  .restaurant-cards { grid-template-columns: 1fr; }
+  .track-container { grid-template-columns: 1fr; }
+  .title-slide h1 { font-size: 1.7rem; }
+  .nav-arrows {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    border-radius: 0;
+    padding: 12px 20px;
+    justify-content: space-between;
+    background: rgba(27,58,45,0.96);
+    gap: 0;
+  }
+  .nav-btn {
+    min-width: 80px;
+    height: 48px;
+    padding: 0 18px;
+    font-size: 0.9rem;
+    border-width: 2px;
+  }
+  .nav-btn:active {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(0.95);
+  }
+  .slide-indicator {
+    font-size: 0.9rem;
+    min-width: 70px;
+  }
+  .map-container iframe { height: 220px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .mart-card { min-width: auto; }
+}
+
+@media (max-width: 400px) {
+  .overview-grid { grid-template-columns: 1fr; }
+  html { font-size: 15px; }
+  .slide-inner { padding: 12px 12px 120px 12px; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  body { overflow: visible; height: auto; }
+  .slide { min-width: auto; height: auto; overflow: visible; page-break-after: always; }
+  .slides-wrapper { display: block; width: auto; height: auto; overflow: visible; transform: none !important; }
+  .nav-arrows { display: none; }
+  .slide-header { position: static; }
+  .map-container { display: none; }
+  .slide-inner { padding-bottom: 20px; }
+}
+
+/* ===== SCROLLBAR ===== */
+.slide::-webkit-scrollbar { width: 6px; }
+.slide::-webkit-scrollbar-track { background: transparent; }
+.slide::-webkit-scrollbar-thumb { background: rgba(27,58,45,0.2); border-radius: 3px; }
+.slide::-webkit-scrollbar-thumb:hover { background: rgba(27,58,45,0.4); }
+
+/* ===== RESERVATION TAG ===== */
+.reserve-tag {
+  display: inline-block;
+  background: #E53935;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: 6px;
+}
+
+/* ===== FREE TAG ===== */
+.free-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: 6px;
+}
+
+/* ===== ESIM/EXCHANGE CARDS ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+.info-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.info-card h4 {
+  font-size: 0.92rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.info-card li {
+  font-size: 0.82rem;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+/* ===== BOOKING CHECKLIST ===== */
+.booking-list {
+  list-style: none;
+}
+.booking-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.booking-list li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+
+<div class="slides-wrapper" id="slidesWrapper">
+
+<!-- ==================== SLIDE 1: TITLE ==================== -->
+<div class="slide" id="slide-1">
+<div class="slide-inner title-slide">
+  <div class="title-flag">&#x1F1E6;&#x1F1FA;</div>
+  <h1>호주 시드니 가족여행<br>통합 가이드</h1>
+  <p class="title-sub">2026.4.6(일) ~ 4.13(월) | 7박 8일</p>
+  <p style="font-size:0.88rem; color:var(--text-light); margin-bottom:24px;">
+    성인 4명 + 초등학생 2명 + 미취학 1명 + 영아 1명 = 총 8명
+  </p>
+
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="overview-icon">&#9992;&#65039;</div>
+      <div class="overview-label">항공</div>
+      <div class="overview-value">대한항공 직항<br>ICN &#8594; SYD 10h15m</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-icon">&#127976;</div>
+      <div class="overview-label">숙소</div>
+      <div class="overview-value">풀만 시드니<br>하이드 파크</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-icon">&#127780;&#65039;</div>
+      <div class="overview-label">날씨 (4월)</div>
+      <div class="overview-value">15~22&#176;C<br>가을 / 선선</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-icon">&#128101;</div>
+      <div class="overview-label">인원</div>
+      <div class="overview-value">총 8명<br>유료 7명 (영아 무료)</div>
+    </div>
+  </div>
+
+  <p style="margin-top:24px; font-size:0.78rem; color:var(--text-light);">
+    &#8592; &#8594; 화살표 키 또는 하단 버튼으로 슬라이드를 넘기세요
+  </p>
+</div>
+</div>
+
+<!-- ==================== SLIDE 2: CHECKLIST ==================== -->
+<div class="slide" id="slide-2">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1>&#9989; 준비물 체크리스트</h1>
+    <div class="subtitle">출발 전 꼭 확인하세요</div>
+  </div>
+
+  <div class="checklist-grid">
+    <div class="check-card">
+      <h4>&#128203; 출발 전 할 일</h4>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c1"><label>ETA 비자 신청 (전자여행허가)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c2"><label>호텔 예약 확인서 출력</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c3"><label>여행자보험 가입</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c5"><label>호주 달러 환전 (KB스타뱅킹 공항수령)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c4"><label>eSIM 구매 및 설치 (Airalo 등)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c_opal"><label>Opal 대중교통 카드 구매 / 비접촉 결제 확인</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c_opera"><label>오페라하우스 투어 예매 (한국어 투어)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c8"><label>씨라이프 아쿠아리움 온라인 예매</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c8b"><label>타롱가 동물원 콤보 티켓 예매</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c_blue"><label>블루마운틴 여행사 연락 (남씨가족)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c6"><label>Hurricane's Grill 예약 (4/7 저녁)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c_fratelli"><label>Fratelli Fresh 예약 (4/8 저녁)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c_golden"><label>Golden Century 예약 (4/9 저녁)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c7"><label>Caminetto 예약 (4/10 저녁)</label>
+      </div>
+    </div>
+
+    <div class="check-card">
+      <h4>&#128196; 서류</h4>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c9"><label>여권 (유효기간 6개월+)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c10"><label>여권 사본 (별도 보관)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c11"><label>항공권 e-ticket</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c12"><label>호텔 예약 확인서</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c13"><label>여행자 보험 증서</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c14"><label>국제운전면허증 (필요시)</label>
+      </div>
+    </div>
+
+    <div class="check-card">
+      <h4>&#128138; 상비약</h4>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c15"><label>해열제 (어린이/성인)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c16"><label>소화제 / 지사제</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c17"><label>밴드 / 소독약</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c18"><label>멀미약</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c19"><label>알레르기약</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c20"><label>모기 물림 연고</label>
+      </div>
+    </div>
+
+    <div class="check-card">
+      <h4>&#128118; 아이 준비물</h4>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c21"><label>유모차 (가벼운 것)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c22"><label>기내 장난감 / 태블릿</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c23"><label>간식 (기내용 + 여행용)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c24"><label>물티슈 / 기저귀</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c25"><label>아기 이유식 / 분유</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c26"><label>여벌 옷 (물놀이용)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c27"><label>아이 선크림</label>
+      </div>
+    </div>
+
+    <div class="check-card">
+      <h4>&#128084; 의류</h4>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c28"><label>겉옷 (바람막이/가디건)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c29"><label>긴팔 + 반팔 혼합</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c30"><label>편한 운동화</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c31"><label>우산 / 우비</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c32"><label>모자 / 선글라스</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c33"><label>수영복 (맨리비치용)</label>
+      </div>
+    </div>
+
+    <div class="check-card">
+      <h4>&#9888;&#65039; 입국 주의사항</h4>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c34"><label>음식물 반입 제한 확인</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c35"><label>입국카드 작성 (기내)</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c36"><label>호주 검역 규정 숙지</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c37"><label>육류/과일 절대 반입금지!</label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox" data-key="c38"><label>가공식품은 신고 후 반입 가능</label>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 3: MART + eSIM + EXCHANGE ==================== -->
+<div class="slide" id="slide-3">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1>&#128722; 마트 + eSIM + 환전</h1>
+    <div class="subtitle">도착 후 필수 정보</div>
+  </div>
+
+  <div class="section-title">&#127979; 근처 마트</div>
+
+  <div class="mart-card best">
+    <h4>Woolworths Town Hall <span class="mart-badge">가장 추천</span></h4>
+    <div class="mart-info">
+      <div class="mart-detail"><strong>거리:</strong> 도보 8분</div>
+      <div class="mart-detail"><strong>영업:</strong> 6am~12am</div>
+      <div class="mart-detail"><strong>특징:</strong> 품목 다양, 대형 매장</div>
+    </div>
+  </div>
+
+  <div class="mart-card">
+    <h4>Coles World Square <span class="mart-badge" style="background:var(--info)">가장 가까움</span></h4>
+    <div class="mart-info">
+      <div class="mart-detail"><strong>거리:</strong> 도보 6분</div>
+      <div class="mart-detail"><strong>영업:</strong> 6am~11pm</div>
+      <div class="mart-detail"><strong>특징:</strong> 호텔에서 가장 가까운 마트</div>
+    </div>
+  </div>
+
+  <div class="mart-card">
+    <h4>Thai Kee IGA</h4>
+    <div class="mart-info">
+      <div class="mart-detail"><strong>거리:</strong> 도보 12분</div>
+      <div class="mart-detail"><strong>영업:</strong> 9am~8pm</div>
+      <div class="mart-detail"><strong>특징:</strong> 아시안 전문 슈퍼 (차이나타운)</div>
+    </div>
+  </div>
+
+  <div class="mart-card" style="border-left: 4px solid #E91E63;">
+    <h4>🇰🇷 G3 Korean Groceries (한인마트)</h4>
+    <div class="mart-info">
+      <div class="mart-detail"><strong>위치:</strong> 614 George St (코리아타운)</div>
+      <div class="mart-detail"><strong>거리:</strong> 호텔에서 도보 10분</div>
+      <div class="mart-detail"><strong>특징:</strong> 한국 라면, 김치, 떡, 반찬, 고추장 등 한국 식재료 전문. Central St 골목 안</div>
+    </div>
+  </div>
+
+  <div class="info-grid" style="margin-top:24px;">
+    <div class="info-card">
+      <h4>&#128242; eSIM 가이드</h4>
+      <ul style="list-style:none; padding:0;">
+        <li style="padding:4px 0; font-size:0.82rem;"><strong>Airalo:</strong> $8~15 (7일)</li>
+        <li style="padding:4px 0; font-size:0.82rem;"><strong>eSIM2Fly:</strong> $10~20 (8일)</li>
+        <li style="padding:4px 0; font-size:0.82rem;"><strong>트래블월렛:</strong> &#8361;8,000~15,000</li>
+        <li style="padding:6px 0; font-size:0.78rem; color:var(--text-light);">출발 전 미리 설치 및 테스트 필수!</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h4>&#128176; 환전 가이드</h4>
+      <ul style="list-style:none; padding:0;">
+        <li style="padding:4px 0; font-size:0.82rem;"><strong>현재 환율:</strong> AUD 1 &#8776; &#8361;1,025~1,031</li>
+        <li style="padding:4px 0; font-size:0.82rem;"><span class="info-tag warning">52주 최고점</span></li>
+        <li style="padding:4px 0; font-size:0.82rem;"><strong>전략:</strong> 분할 환전 추천</li>
+        <li style="padding:4px 0; font-size:0.82rem;"><strong>추천:</strong> KB스타뱅킹 &#8594; 공항 수령</li>
+        <li style="padding:6px 0; font-size:0.78rem; color:var(--text-light);">카드 결제 위주 + 현금 $300~500 정도</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 4: D1 (4/6) 출발일 ==================== -->
+<div class="slide" id="slide-4">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D1</span> 출발일</h1>
+    <div class="subtitle"><span class="day-date">4월 6일 (일) | 인천 &#8594; 시드니</span></div>
+  </div>
+
+  <div class="map-container">
+    <div class="map-label">&#128205; 오늘의 경로: 인천국제공항</div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.123!2d126.439!3d37.460!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b9473b1e1d1a1%3A0xf9fc0e5a0a1e7b5!2sIncheon%20International%20Airport!5e0!3m2!1sko!2skr!4v1" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">18:00</div>
+      <div class="timeline-title">인천공항 도착</div>
+      <div class="timeline-desc">제2터미널 | 대한항공 체크인 카운터<br>짐 위탁, 출국 수속</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">19:30</div>
+      <div class="timeline-title">출국 심사 + 면세 구역</div>
+      <div class="timeline-desc">면세점 둘러보기, 탑승구 이동</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">21:50</div>
+      <div class="timeline-title">인천 출발 &#9992;&#65039;</div>
+      <div class="timeline-desc">ICN &#8594; SYD 직항 | 약 10시간 15분<br>기내식 2회 제공</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px; background:#FFF8E1; border-color:#FFD54F;">
+    <h4 style="color:#F57F17;">&#128161; 기내 팁</h4>
+    <ul style="padding-left:18px;">
+      <li>아이 태블릿/헤드폰 미리 충전</li>
+      <li>목베개, 안대 챙기기</li>
+      <li>기내에서 입국카드 작성</li>
+      <li>시드니 시차: +2시간 (서머타임 종료 후 +1시간)</li>
+    </ul>
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D1 예상 비용</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>공항 식사/간식</td><td>~$0 (원화)</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D1 합계</span><span>$0</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 5: D2 (4/7) 도착 + 오페라하우스 ==================== -->
+<div class="slide" id="slide-5">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D2</span> 도착 + 오페라하우스</h1>
+    <div class="subtitle"><span class="day-date">4월 7일 (화) | 시드니 시내</span></div>
+  </div>
+
+  <div class="map-container">
+    <div class="map-label">&#128205; D2 경로: 공항 &#8594; 호텔 &#8594; 시내 &#8594; 오페라하우스</div>
+    <iframe src="https://maps.google.com/maps?saddr=Sydney+Airport&daddr=Pullman+Sydney+Hyde+Park+to:Bar+Luca+Sydney+CBD+to:Museum+of+Sydney+to:State+Library+of+NSW+to:Royal+Botanic+Garden+Sydney+to:Sydney+Opera+House+to:Hurricanes+Grill+Circular+Quay&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">09:05</div>
+      <div class="timeline-title">&#9992;&#65039; 시드니 공항 도착</div>
+      <div class="timeline-desc">입국 심사 + 세관 (약 1시간 소요)</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">10:30</div>
+      <div class="timeline-title">공항 &#8594; 호텔 이동</div>
+      <div class="timeline-desc">Airport Link 기차 &#8594; Museum역 (약 15분)<br><span class="info-tag">성인 $20 x4 = $80</span> <span class="info-tag">아동 $14 x2 = $28</span> <span class="info-tag">미취학 $14</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">11:00</div>
+      <div class="timeline-title">풀만 시드니 하이드파크 체크인</div>
+      <div class="timeline-desc">짐 맡기고 출발 (얼리 체크인 시도)</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">12:00</div>
+      <div class="timeline-title">&#127828; 점심</div>
+      <div class="restaurant-cards">
+        <div class="resto-card recommended">
+          <span class="resto-badge">추천</span>
+          <div class="resto-name">Bar Luca</div>
+          <div class="resto-price">$15~25/인</div>
+          <div class="resto-note">수제 버거 맛집, 아이들도 좋아함</div>
+        </div>
+        <div class="resto-card">
+          <span class="resto-alt-badge">대안</span>
+          <div class="resto-name">Pancakes on the Rocks</div>
+          <div class="resto-price">$12~22/인</div>
+          <div class="resto-note">팬케이크, 아이 친화적</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">13:30</div>
+      <div class="timeline-title">시드니 박물관 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">호주 역사와 문화 전시</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">14:30</div>
+      <div class="timeline-title">NSW 주립 도서관 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">아름다운 건축, 사진 스팟 (20~30분이면 충분)</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">15:00</div>
+      <div class="timeline-title">로열 보타닉 가든 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">오페라하우스 배경 포토 스팟, 넓은 잔디밭에서 아이들 뛰어놀기</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">17:00</div>
+      <div class="timeline-title">오페라 하우스 <span class="free-tag">외관 무료</span></div>
+      <div class="timeline-desc">석양과 함께 감상, 기념 촬영</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">18:00</div>
+      <div class="timeline-title">&#127860; 저녁</div>
+      <div class="restaurant-cards">
+        <div class="resto-card recommended">
+          <span class="resto-badge">추천</span>
+          <div class="resto-name">Hurricane's Grill</div>
+          <div class="resto-price">$30~55/인</div>
+          <div class="resto-note">립 전문, 서큘러키 뷰 <span class="reserve-tag">예약필수</span></div>
+        </div>
+        <div class="resto-card">
+          <span class="resto-alt-badge">대안</span>
+          <div class="resto-name">Salt Meats Cheese</div>
+          <div class="resto-price">$25~40/인</div>
+          <div class="resto-note">이탈리안, 피자/파스타</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">19:30</div>
+      <div class="timeline-title">호텔 복귀</div>
+      <div class="timeline-desc">마트 들러서 물/간식 구매</div>
+    </div>
+  </div>
+
+  <div style="background:#FFF3E0; border-left:4px solid #E65100; border-radius:0 8px 8px 0; padding:14px 20px; margin:16px 0; font-size:0.95rem;">
+    <strong>⚠️ 도착일 TIP:</strong> 야간 비행 직후라 아이들이 피곤할 수 있습니다. 위 일정은 <strong>선택 리스트</strong>로 활용하세요!<br>
+    컨디션이 좋으면 전부, 힘들면 <strong>보타닉 가든 + 오페라하우스 + 저녁</strong>만으로도 충분합니다.<br>
+    시드니 박물관·도서관은 D3 오전으로 옮겨도 OK (호텔에서 도보 거리).
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D2 예상 비용</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>Airport Link (성인4+아동2+미취학1)</td><td>$122</td></tr>
+      <tr><td>점심 Bar Luca (~$20 x 7명)</td><td>$140</td></tr>
+      <tr><td>저녁 Hurricane's Grill (~$42 x 7명)</td><td>$294</td></tr>
+      <tr><td>관광지 (모두 무료)</td><td>$0</td></tr>
+      <tr><td>시내 교통 (Opal 평일캡)</td><td>$97</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D2 합계</span><span>~$653</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 6: D3 (4/8) 박물관 + 아쿠아리움 ==================== -->
+<div class="slide" id="slide-6">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D3</span> 박물관 + 아쿠아리움</h1>
+    <div class="subtitle"><span class="day-date">4월 8일 (수) | 달링하버</span></div>
+  </div>
+
+  <div class="map-container">
+    <div class="map-label">&#128205; D3 경로: 호텔 &#8594; 호주 박물관 &#8594; QVB &#8594; 아쿠아리움 &#8594; 달링하버</div>
+    <iframe src="https://maps.google.com/maps?saddr=Pullman+Sydney+Hyde+Park&daddr=Australian+Museum+Sydney+to:Hyde+Park+Sydney+to:Queen+Victoria+Building+Sydney+to:SEA+LIFE+Sydney+Aquarium+to:Darling+Harbour+to:Fratelli+Fresh+Darling+Harbour&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">08:00</div>
+      <div class="timeline-title">호텔 조식</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">09:00</div>
+      <div class="timeline-title">호주 박물관 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">호텔에서 도보 5분! 공룡, 자연사 전시 &#8594; 아이들 최고</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">10:00</div>
+      <div class="timeline-title">리브가 시드니대 미팅</div>
+      <div class="timeline-desc">개별 일정</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">11:30</div>
+      <div class="timeline-title">하이드 파크 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">ANZAC 전쟁 기념관, 분수대, 산책</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">12:30</div>
+      <div class="timeline-title">&#127828; 점심</div>
+      <div class="restaurant-cards">
+        <div class="resto-card recommended">
+          <span class="resto-badge">추천</span>
+          <div class="resto-name">QVB 푸드코트</div>
+          <div class="resto-price">$12~18/인</div>
+          <div class="resto-note">다양한 메뉴, 아이들 취향별 선택</div>
+        </div>
+        <div class="resto-card">
+          <span class="resto-alt-badge">대안</span>
+          <div class="resto-name">Chat Thai</div>
+          <div class="resto-price">$15~22/인</div>
+          <div class="resto-note">태국 음식, 볶음면/볶음밥 인기</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">14:00</div>
+      <div class="timeline-title">&#128032; 씨라이프 아쿠아리움</div>
+      <div class="timeline-desc">
+        상어 터널, 듀공, 펭귄 등 (~2.5시간)<br>
+        <span class="info-tag">성인 ~$47 x4</span> <span class="info-tag">아동 ~$33 x2</span> <span class="info-tag">미취학 ~$33</span> <span class="info-tag info">영아 무료</span>
+      </div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">16:30</div>
+      <div class="timeline-title">달링하버 산책 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">워터프론트 산책, 놀이터</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">18:00</div>
+      <div class="timeline-title">&#127860; 저녁</div>
+      <div class="restaurant-cards">
+        <div class="resto-card recommended">
+          <span class="resto-badge">추천</span>
+          <div class="resto-name">Fratelli Fresh</div>
+          <div class="resto-price">$25~35/인</div>
+          <div class="resto-note">이탈리안 <span class="free-tag">12세 이하 키즈 무료!</span></div>
+        </div>
+        <div class="resto-card">
+          <span class="resto-alt-badge">대안</span>
+          <div class="resto-name">Noodle Face</div>
+          <div class="resto-price">$12~20/인</div>
+          <div class="resto-note">아시안 누들, 가성비 좋음</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">19:30</div>
+      <div class="timeline-title">호텔 복귀</div>
+    </div>
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D3 예상 비용</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>교통 (Opal 평일캡, 7명)</td><td>$97</td></tr>
+      <tr><td>점심 QVB (~$15 x 7명)</td><td>$105</td></tr>
+      <tr><td>씨라이프 아쿠아리움</td><td>$287</td></tr>
+      <tr><td>저녁 Fratelli Fresh (~$30 x 4성인, 키즈무료)</td><td>$120</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D3 합계</span><span>~$609</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 7: D4 (4/9) 피쉬마켓 + 차이나타운 ==================== -->
+<div class="slide" id="slide-7">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D4</span> 피쉬마켓 + 차이나타운</h1>
+    <div class="subtitle"><span class="day-date">4월 9일 (목) | 피르마 파크 &#8594; 차이나타운</span></div>
+  </div>
+
+  <div class="map-container">
+    <div class="map-label">&#128205; D4 경로: 호텔 &#8594; 피르마파크 &#8594; 해양박물관 &#8594; 피쉬마켓 &#8594; 차이나타운</div>
+    <iframe src="https://maps.google.com/maps?saddr=Pullman+Sydney+Hyde+Park&daddr=Pirrama+Park+Pyrmont+to:Australian+National+Maritime+Museum+to:Sydney+Fish+Market+to:Tumbalong+Park+Sydney+to:Paddys+Markets+Haymarket+to:Chinatown+Sydney+to:Golden+Century+Sydney&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">08:00</div>
+      <div class="timeline-title">호텔 조식</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">09:30</div>
+      <div class="timeline-title">Pirrama Park 산책 + ☕ 카페 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">라이트레일 Pyrmont Bay역 | 하버브릿지 전망 수변 산책 + 아이들 놀이터<br>
+        <strong>☕ Pirrama Park Kiosk (PPK)</strong> — 공원 내 카페. Campos 커피, 도넛, 토스티, 소프트아이스크림. 아이들 놀이터 바로 옆에서 커피 한 잔! 8:30am~4:30pm</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">10:30</div>
+      <div class="timeline-title">해양박물관 <span class="free-tag">기본전시 무료</span></div>
+      <div class="timeline-desc">배, 잠수함 전시, 아이들 체험 프로그램</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">12:00</div>
+      <div class="timeline-title">&#127843; 점심: 시드니 피쉬마켓</div>
+      <div class="timeline-desc">
+        신선한 해산물 직접 골라 먹기!<br>
+        <span class="info-tag">$15~40/인</span> 굴, 새우, 피쉬앤칩스 추천
+      </div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">14:00</div>
+      <div class="timeline-title">&#128166; 텀바롱 파크 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">물놀이 놀이터! <span class="info-tag warning">여벌옷 필수!</span></div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">16:00</div>
+      <div class="timeline-title">패디스 마켓</div>
+      <div class="timeline-desc">기념품, 잡화 쇼핑</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">16:30</div>
+      <div class="timeline-title">차이나타운 산책 + 간식</div>
+      <div class="timeline-desc">버블티, 만두, 호떡 등 간식거리 탐방. 한인마트(G3 Korean Groceries) 들르기</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">18:00</div>
+      <div class="timeline-title">&#127860; 저녁</div>
+      <div class="restaurant-cards">
+        <div class="resto-card recommended">
+          <span class="resto-badge">추천</span>
+          <div class="resto-name">Golden Century</div>
+          <div class="resto-price">$25~40/인</div>
+          <div class="resto-note">10명 원탁 가능! 해산물 중식 <span class="reserve-tag">예약권장</span></div>
+        </div>
+        <div class="resto-card">
+          <span class="resto-alt-badge">대안</span>
+          <div class="resto-name">Marigold</div>
+          <div class="resto-price">$20~35/인</div>
+          <div class="resto-note">딤섬 전문, 대가족 좌석 가능</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">19:30</div>
+      <div class="timeline-title">호텔 복귀</div>
+    </div>
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D4 예상 비용</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>교통 (Opal 평일캡, 7명)</td><td>$97</td></tr>
+      <tr><td>점심 피쉬마켓 (~$27 x 7명)</td><td>$189</td></tr>
+      <tr><td>저녁 Golden Century (~$32 x 7명)</td><td>$224</td></tr>
+      <tr><td>관광지 (모두 무료)</td><td>$0</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D4 합계</span><span>~$510</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 8: D5 (4/10) 타롱가 동물원 ==================== -->
+<div class="slide" id="slide-8">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D5</span> 타롱가 동물원 + 더 록스</h1>
+    <div class="subtitle"><span class="day-date">4월 10일 (금) | 동물원 + 서큘러키</span></div>
+  </div>
+
+  <div class="map-container">
+    <div class="map-label">&#128205; D5 경로: 호텔 &#8594; 서큘러키 &#8594; 타롱가 동물원 &#8594; 더 록스</div>
+    <iframe src="https://maps.google.com/maps?saddr=Pullman+Sydney+Hyde+Park&daddr=Circular+Quay+Sydney+to:Taronga+Zoo+Sydney+to:MCA+Australia+Sydney+to:The+Rocks+Sydney+to:Caminetto+The+Rocks+Sydney&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="card" style="background:#E8F5E9; border-color:#66BB6A; margin-bottom:16px;">
+    <h4 style="color:#2E7D32;">&#128178; 금요일 Opal 30% 할인!</h4>
+    <p style="font-size:0.85rem;">금요일은 Opal 카드 요금 30% 할인! 평일 캡 $19.30 &#8594; ~$13.51/성인</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">08:00</div>
+      <div class="timeline-title">호텔 조식 + 체크아웃 준비</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">09:00</div>
+      <div class="timeline-title">&#9973; 호텔 → 서큘러키 → 타롱가 (기차+페리)</div>
+      <div class="timeline-desc">Museum역→Circular Quay 기차 5분 + 페리 12분 | 약 50분 소요</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">10:00</div>
+      <div class="timeline-title">&#129433; 타롱가 동물원</div>
+      <div class="timeline-desc">
+        코알라, 캥거루, 펭귄, 기린 등 (~3시간)<br>
+        <span class="info-tag">성인 콤보 ~$49 x4</span> <span class="info-tag">아동 콤보 ~$28 x2</span> <span class="info-tag">미취학 ~$28</span> <span class="info-tag info">영아 무료</span><br>
+        <span style="font-size:0.78rem; color:var(--text-light);">* 콤보 = 페리 왕복 + 입장 + 스카이사파리</span>
+      </div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">13:00</div>
+      <div class="timeline-title">&#127828; 점심: The View 카페</div>
+      <div class="timeline-desc">동물원 내 카페 | $15~25/인 | 하버 뷰</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">14:00</div>
+      <div class="timeline-title">서큘러키 복귀 (페리)</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">14:30</div>
+      <div class="timeline-title">MCA 현대미술관 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">현대 미술 전시, 옥상 테라스 뷰</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">15:30</div>
+      <div class="timeline-title">더 록스 산책</div>
+      <div class="timeline-desc">역사적인 골목, 주말시장(토요일), 숍 구경</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">18:00</div>
+      <div class="timeline-title">&#127860; 마지막 밤 저녁 🎉</div>
+      <div class="restaurant-cards">
+        <div class="resto-card recommended">
+          <span class="resto-badge">추천</span>
+          <div class="resto-name">Caminetto</div>
+          <div class="resto-price">$30~50/인</div>
+          <div class="resto-note">이탈리안 고급 레스토랑 <span class="reserve-tag">예약필수</span></div>
+        </div>
+        <div class="resto-card">
+          <span class="resto-alt-badge">대안</span>
+          <div class="resto-name">Winghaus</div>
+          <div class="resto-price">$20~30/인</div>
+          <div class="resto-note">치킨 윙 전문, 캐주얼</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;">
+        <div class="resto-card" style="max-width:calc(50% - 5px);">
+          <span class="resto-alt-badge">대안 2</span>
+          <div class="resto-name">El Camino Cantina</div>
+          <div class="resto-price">$20~35/인</div>
+          <div class="resto-note">멕시칸, 타코/부리또</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">19:00</div>
+      <div class="timeline-title">호텔 복귀</div>
+    </div>
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D5 예상 비용</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>타롱가 콤보 (성인4+아동2+미취학1)</td><td>$280</td></tr>
+      <tr><td>교통 Opal (금요 30%할인, 7명)</td><td>$68</td></tr>
+      <tr><td>점심 The View (~$20 x 7명)</td><td>$140</td></tr>
+      <tr><td>저녁 Caminetto (~$40 x 7명)</td><td>$280</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D5 합계</span><span>~$768</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 9: D6 (4/11) 일정 분리 ==================== -->
+<div class="slide" id="slide-9">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D6</span> 일정 분리</h1>
+    <div class="subtitle"><span class="day-date">4월 11일 (토) | 귀국 + 블루마운틴</span></div>
+  </div>
+
+  <div class="card" style="background:#FFF3E0; border-color:#FF9800; margin-bottom:20px;">
+    <h4 style="color:#E65100;">&#9888;&#65039; 오늘부터 일정 분리!</h4>
+    <p style="font-size:0.88rem;">우리 가족 4명은 귀국 / 남씨가족 6명은 블루 마운틴</p>
+  </div>
+
+  <div class="track-container">
+    <div class="track track-a">
+      <h3>&#9992;&#65039; Track A: 우리 가족 (4명 귀국)</h3>
+      <div class="timeline" style="margin-top:16px;">
+        <div class="timeline-item meal">
+          <div class="timeline-time">06:00</div>
+          <div class="timeline-title">아침 (호텔 방)</div>
+          <div class="timeline-desc">전날 마트 구매 ~$3-5/인</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">06:30</div>
+          <div class="timeline-title">체크아웃</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">07:00</div>
+          <div class="timeline-title">호텔 &#8594; 공항</div>
+          <div class="timeline-desc">기차 $18/인 x 2성인<br>(아이 $9 x 2)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">10:45</div>
+          <div class="timeline-title">&#9992;&#65039; 시드니 출발</div>
+          <div class="timeline-desc">SYD &#8594; ICN</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="track track-b">
+      <h3>&#9968;&#65039; Track B: 남씨가족 (6명)</h3>
+      <div class="timeline" style="margin-top:16px;">
+        <div class="timeline-item">
+          <div class="timeline-time">08:00</div>
+          <div class="timeline-title">Central역 출발</div>
+          <div class="timeline-desc">Central &#8594; Katoomba (~2시간)</div>
+        </div>
+        <div class="timeline-item attraction">
+          <div class="timeline-time">10:00</div>
+          <div class="timeline-title">블루 마운틴 도착</div>
+          <div class="timeline-desc">세 자매봉(Three Sisters) 전망<br>유칼립투스 숲 산책</div>
+        </div>
+        <div class="timeline-item meal">
+          <div class="timeline-time">12:30</div>
+          <div class="timeline-title">&#127828; Katoomba 점심</div>
+          <div class="timeline-desc">~$15~20/인</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">15:00</div>
+          <div class="timeline-title">복귀 기차</div>
+          <div class="timeline-desc">Katoomba &#8594; Central (~2시간)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">17:00</div>
+          <div class="timeline-title">시드니 도착</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-container" style="margin-top:20px;">
+    <div class="map-label">&#128205; Track A: 호텔 &#8594; 공항 | Track B: Central &#8594; Katoomba 블루마운틴</div>
+    <iframe src="https://maps.google.com/maps?saddr=Sydney+Central+Station&daddr=Katoomba+Blue+Mountains&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D6 예상 비용</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>Track A: 공항 기차 (2성인+2아동)</td><td>$54</td></tr>
+      <tr><td>Track A: 아침 간식</td><td>$20</td></tr>
+      <tr><td>Track B: Opal 주말캡 (4명 x $9.65)</td><td>$39</td></tr>
+      <tr><td>Track B: 점심 (~$17 x 4명)</td><td>$68</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D6 합계</span><span>~$181</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 10: D7 (4/12) 남씨가족 ==================== -->
+<div class="slide" id="slide-10">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D7</span> 시드니대 + 맨리비치</h1>
+    <div class="subtitle"><span class="day-date">4월 12일 (일) | 남씨가족 6명</span></div>
+  </div>
+
+  <div class="card" style="background:#E3F2FD; border-color:#42A5F5; margin-bottom:16px;">
+    <h4 style="color:#1565C0;">&#128101; 남씨가족 6명 일정</h4>
+    <p style="font-size:0.85rem;">주말 Opal 상한 $9.65/인 &#8594; 교통비 절약!</p>
+  </div>
+
+  <div class="map-container">
+    <div class="map-label">&#128205; D7 경로: 시드니대 &#8594; 글리브 &#8594; 서큘러키 &#8594; 맨리비치</div>
+    <iframe src="https://maps.google.com/maps?saddr=University+of+Sydney&daddr=Sappho+Books+Glebe+to:Circular+Quay+Sydney+to:Manly+Beach+Sydney&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">08:30</div>
+      <div class="timeline-title">호텔 조식</div>
+    </div>
+    <div class="timeline-item" style="border-left-color:#9C27B0;">
+      <div class="timeline-time">⛪ 선택</div>
+      <div class="timeline-title">한인교회 주일예배 (희망 시)</div>
+      <div class="timeline-desc">
+        <strong>시드니 한인장로교회 (KPCS)</strong> — 59 Arthur St, Strathfield | 9:00 / 11:00 예배<br>
+        <strong>시드니한인연합교회</strong> — 98 Albert Rd, Strathfield | 일요일 예배<br>
+        <strong>시드니 코너스톤 한인교회</strong> — Chatswood 지역<br>
+        <span style="font-size:0.8rem; color:var(--text-light);">* Strathfield까지 기차 약 25분. 참석 시 오전 일정 조정 필요</span>
+      </div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">09:30</div>
+      <div class="timeline-title">시드니 대학교 <span class="free-tag">무료</span></div>
+      <div class="timeline-desc">
+        해리포터풍 쿼드랭글 시계탑 (334m)<br>
+        캠퍼스 산책, 건축 감상
+      </div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">11:00</div>
+      <div class="timeline-title">&#9749; 사포 북스 카페</div>
+      <div class="timeline-desc">쿼드랭글에서 390m | 독립서점+카페<br>브런치 ~$12~18/인</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">12:30</div>
+      <div class="timeline-title">서큘러키 이동</div>
+      <div class="timeline-desc">버스 또는 라이트레일</div>
+    </div>
+    <div class="timeline-item attraction">
+      <div class="timeline-time">13:00</div>
+      <div class="timeline-title">&#127754; 맨리 비치 (페리 30분)</div>
+      <div class="timeline-desc">
+        서핑, 모래놀이, 코르소 거리 산책<br>
+        <span class="info-tag">수영복 챙기기!</span>
+      </div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">14:00</div>
+      <div class="timeline-title">&#127828; 맨리 점심</div>
+      <div class="timeline-desc">비치 근처 카페/레스토랑 ~$15~25/인</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">17:00</div>
+      <div class="timeline-title">서큘러키 복귀 (페리)</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">18:00</div>
+      <div class="timeline-title">&#127860; 저녁</div>
+      <div class="timeline-desc">시내 식당 ~$20~30/인</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">19:30</div>
+      <div class="timeline-title">호텔 복귀</div>
+    </div>
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D7 예상 비용 (남씨가족 6명)</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>교통 Opal 주말캡 (4명 x $9.65)</td><td>$39</td></tr>
+      <tr><td>브런치 사포 카페 (~$15 x 4명)</td><td>$60</td></tr>
+      <tr><td>점심 맨리 (~$20 x 4명)</td><td>$80</td></tr>
+      <tr><td>저녁 (~$25 x 4명)</td><td>$100</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D7 합계</span><span>~$279</span>
+    </div>
+    <p style="font-size:0.78rem; color:var(--text-light); margin-top:8px;">* 시댁가족 6명 중 유료 4명 (성인2+초등2) 기준 추산. 미취학+영아 별도 없음 추정.</p>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 11: D8 (4/13) 귀국 ==================== -->
+<div class="slide" id="slide-11">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1><span class="day-badge">D8</span> 남씨가족 귀국</h1>
+    <div class="subtitle"><span class="day-date">4월 13일 (월) | 시드니 &#8594; 인천</span></div>
+  </div>
+
+  <div class="map-container">
+    <div class="map-label">&#128205; D8 경로: 호텔 &#8594; 시드니 공항</div>
+    <iframe src="https://maps.google.com/maps?saddr=Pullman+Sydney+Hyde+Park&daddr=Sydney+Airport&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">06:00</div>
+      <div class="timeline-title">기상 + 짐 정리</div>
+    </div>
+    <div class="timeline-item meal">
+      <div class="timeline-time">06:30</div>
+      <div class="timeline-title">간단한 아침</div>
+      <div class="timeline-desc">전날 구매한 간식/빵 ~$3~5/인</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">07:00</div>
+      <div class="timeline-title">체크아웃</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">07:30</div>
+      <div class="timeline-title">호텔 &#8594; 공항</div>
+      <div class="timeline-desc">기차 Museum역 &#8594; 공항역 (~15분)</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">08:00</div>
+      <div class="timeline-title">공항 도착 + 체크인</div>
+      <div class="timeline-desc">면세점 쇼핑, 출국 수속</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">10:00~</div>
+      <div class="timeline-title">&#9992;&#65039; 시드니 출발</div>
+      <div class="timeline-desc">SYD &#8594; ICN</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px; background:#FFF8E1; border-color:#FFD54F;">
+    <h4 style="color:#F57F17;">&#128161; 귀국 전 체크</h4>
+    <ul style="padding-left:18px;">
+      <li>면세 환급 (TRS) - $300 이상 구매 시</li>
+      <li>호텔 금고 확인</li>
+      <li>충전기, 어댑터 회수</li>
+      <li>Opal 카드 잔액 확인 (환불 불가, 기념품으로)</li>
+    </ul>
+  </div>
+
+  <div class="cost-section">
+    <h3>&#128176; D8 예상 비용 (남씨가족)</h3>
+    <table class="cost-table">
+      <tr><th>항목</th><th>금액 (AUD)</th></tr>
+      <tr><td>공항 기차 (4명)</td><td>$72</td></tr>
+      <tr><td>아침 간식</td><td>$20</td></tr>
+    </table>
+    <div class="cost-total">
+      <span>D8 합계</span><span>~$92</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SLIDE 12: 총 비용 요약 ==================== -->
+<div class="slide" id="slide-12">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1>&#128176; 총 비용 요약</h1>
+    <div class="subtitle">전체 일정 비용 종합 (AUD, 현지 지출 기준)</div>
+  </div>
+
+  <div class="card">
+    <h3>&#128197; 일별 비용 요약</h3>
+    <table class="summary-table">
+      <tr>
+        <th>날짜</th>
+        <th>교통</th>
+        <th>식비</th>
+        <th>관광</th>
+        <th>합계</th>
+      </tr>
+      <tr>
+        <td><strong>D1</strong> 4/6(일)</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td><strong>$0</strong></td>
+      </tr>
+      <tr>
+        <td><strong>D2</strong> 4/7(화)</td>
+        <td>$219</td>
+        <td>$434</td>
+        <td>$0</td>
+        <td><strong>$653</strong></td>
+      </tr>
+      <tr>
+        <td><strong>D3</strong> 4/8(수)</td>
+        <td>$97</td>
+        <td>$225</td>
+        <td>$287</td>
+        <td><strong>$609</strong></td>
+      </tr>
+      <tr>
+        <td><strong>D4</strong> 4/9(목)</td>
+        <td>$97</td>
+        <td>$413</td>
+        <td>$0</td>
+        <td><strong>$510</strong></td>
+      </tr>
+      <tr>
+        <td><strong>D5</strong> 4/10(금)</td>
+        <td>$68</td>
+        <td>$420</td>
+        <td>$280</td>
+        <td><strong>$768</strong></td>
+      </tr>
+      <tr>
+        <td><strong>D6</strong> 4/11(토)</td>
+        <td>$93</td>
+        <td>$88</td>
+        <td>$0</td>
+        <td><strong>$181</strong></td>
+      </tr>
+      <tr>
+        <td><strong>D7</strong> 4/12(일)</td>
+        <td>$39</td>
+        <td>$240</td>
+        <td>$0</td>
+        <td><strong>$279</strong></td>
+      </tr>
+      <tr>
+        <td><strong>D8</strong> 4/13(월)</td>
+        <td>$72</td>
+        <td>$20</td>
+        <td>$0</td>
+        <td><strong>$92</strong></td>
+      </tr>
+      <tr class="grand-total">
+        <td>총 합계</td>
+        <td>$685</td>
+        <td>$1,840</td>
+        <td>$567</td>
+        <td><strong>~$3,092</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card" style="background:var(--cost-bg); border-color:#66BB6A;">
+    <h3 style="color:var(--cost-header);">&#128202; 비용 분석</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+      <div style="text-align:center; padding:14px; background:white; border-radius:10px;">
+        <div style="font-size:1.8rem; font-weight:900; color:var(--primary);">~$3,092</div>
+        <div style="font-size:0.78rem; color:var(--text-light);">AUD 현지 총 지출</div>
+      </div>
+      <div style="text-align:center; padding:14px; background:white; border-radius:10px;">
+        <div style="font-size:1.8rem; font-weight:900; color:var(--primary);">~&#8361;3,170K</div>
+        <div style="font-size:0.78rem; color:var(--text-light);">원화 환산 (&#8776;&#8361;1,025)</div>
+      </div>
+      <div style="text-align:center; padding:14px; background:white; border-radius:10px;">
+        <div style="font-size:1.4rem; font-weight:700; color:var(--accent);">~$387/인</div>
+        <div style="font-size:0.78rem; color:var(--text-light);">1인당 평균 (8명 기준)</div>
+      </div>
+      <div style="text-align:center; padding:14px; background:white; border-radius:10px;">
+        <div style="font-size:1.4rem; font-weight:700; color:var(--accent);">~$442/인</div>
+        <div style="font-size:0.78rem; color:var(--text-light);">1인당 평균 (유료 7명)</div>
+      </div>
+    </div>
+    <p style="font-size:0.78rem; color:var(--text-light); margin-top:12px; text-align:center;">
+      * 항공권, 호텔 숙박비는 별도 (사전 결제 항목)
+    </p>
+  </div>
+
+  <div class="section-title">&#9989; 예약 체크리스트</div>
+  <div class="card">
+    <ul class="booking-list">
+      <li><strong>Hurricane's Grill</strong> &#8212; D2 저녁, 8명, 18:00</li>
+      <li><strong>씨라이프 아쿠아리움</strong> &#8212; D3 온라인 예매 (할인)</li>
+      <li><strong>Golden Century</strong> &#8212; D4 저녁, 8명, 18:30 (원탁 요청)</li>
+      <li><strong>타롱가 동물원 콤보</strong> &#8212; D5 온라인 예매 (페리+입장)</li>
+      <li><strong>Caminetto</strong> &#8212; D5 저녁, 8명, 17:00</li>
+    </ul>
+  </div>
+
+  <div class="emergency-card">
+    <h4>&#128680; 비상 연락처</h4>
+    <ul style="list-style:none; padding:0;">
+      <li style="padding:4px 0;"><strong>호주 응급:</strong> 000 (경찰/소방/구급)</li>
+      <li style="padding:4px 0;"><strong>주시드니 한국 총영사관:</strong> +61-2-9210-0200</li>
+      <li style="padding:4px 0;"><strong>영사콜센터 (24시간):</strong> +82-2-3210-0404</li>
+      <li style="padding:4px 0;"><strong>풀만 하이드파크:</strong> +61-2-9361-8400</li>
+      <li style="padding:4px 0;"><strong>여행자 보험 긴급 연락처:</strong> 보험사 확인</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center; margin-top:30px; padding:20px; color:var(--text-light); font-size:0.82rem;">
+    &#127470;&#127475; &#8594; &#127462;&#127482; 즐거운 가족여행 되세요!
+  </div>
+</div>
+</div>
+
+</div><!-- end slides-wrapper -->
+
+<!-- ===== NAVIGATION ===== -->
+<div class="nav-arrows">
+  <button class="nav-btn" id="prevBtn" onclick="goSlide(-1)" aria-label="이전">&#9664; 이전</button>
+  <span class="slide-indicator" id="slideIndicator">1 / 12</span>
+  <button class="nav-btn" id="nextBtn" onclick="goSlide(1)" aria-label="다음">다음 &#9654;</button>
+</div>
+
+<script>
+// ===== SLIDE NAVIGATION =====
+let currentSlide = 0;
+const totalSlides = 12;
+const wrapper = document.getElementById('slidesWrapper');
+const indicator = document.getElementById('slideIndicator');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function updateSlide() {
+  wrapper.style.transform = `translateX(-${currentSlide * 100}vw)`;
+  indicator.textContent = `${currentSlide + 1} / ${totalSlides}`;
+  prevBtn.disabled = currentSlide === 0;
+  nextBtn.disabled = currentSlide === totalSlides - 1;
+
+  // Scroll current slide to top
+  const slides = document.querySelectorAll('.slide');
+  slides[currentSlide].scrollTop = 0;
+}
+
+function goSlide(dir) {
+  const newSlide = currentSlide + dir;
+  if (newSlide >= 0 && newSlide < totalSlides) {
+    currentSlide = newSlide;
+    updateSlide();
+  }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    goSlide(1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    goSlide(-1);
+  }
+});
+
+// Touch swipe support (improved for mobile)
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartTime = 0;
+let isSwiping = false;
+
+document.addEventListener('touchstart', function(e) {
+  touchStartX = e.changedTouches[0].clientX;
+  touchStartY = e.changedTouches[0].clientY;
+  touchStartTime = Date.now();
+  isSwiping = false;
+}, { passive: true });
+
+document.addEventListener('touchmove', function(e) {
+  if (!isSwiping) {
+    const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+    // If horizontal movement is dominant, it's a swipe
+    if (dx > 10 && dx > dy * 1.5) {
+      isSwiping = true;
+    }
+  }
+}, { passive: true });
+
+document.addEventListener('touchend', function(e) {
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  const dx = touchStartX - touchEndX;
+  const dy = Math.abs(touchStartY - touchEndY);
+  const elapsed = Date.now() - touchStartTime;
+
+  // Only trigger slide change if:
+  // 1. Horizontal distance > 50px
+  // 2. Horizontal movement is greater than vertical (not scrolling)
+  // 3. Swipe completed within 500ms (intentional swipe)
+  if (Math.abs(dx) > 50 && Math.abs(dx) > dy * 1.2 && elapsed < 500) {
+    if (dx > 0) goSlide(1);   // swipe left = next
+    else goSlide(-1);          // swipe right = prev
+  }
+}, { passive: true });
+
+// ===== SLIDES WRAPPER STYLE =====
+wrapper.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+wrapper.style.width = `${totalSlides * 100}vw`;
+
+// Set each slide width
+document.querySelectorAll('.slide').forEach(slide => {
+  slide.style.minWidth = '100vw';
+  slide.style.width = '100vw';
+});
+
+// ===== CHECKBOX PERSISTENCE =====
+function toggleCheck(el) {
+  const cb = el.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  el.classList.toggle('checked', cb.checked);
+  saveChecks();
+}
+
+function saveChecks() {
+  const checks = {};
+  document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => {
+    if (cb.dataset.key) {
+      checks[cb.dataset.key] = cb.checked;
+    }
+  });
+  try {
+    localStorage.setItem('sydney_trip_checks', JSON.stringify(checks));
+  } catch(e) {}
+}
+
+function loadChecks() {
+  try {
+    const saved = localStorage.getItem('sydney_trip_checks');
+    if (saved) {
+      const checks = JSON.parse(saved);
+      document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => {
+        if (cb.dataset.key && checks[cb.dataset.key]) {
+          cb.checked = true;
+          cb.closest('.check-item').classList.add('checked');
+        }
+      });
+    }
+  } catch(e) {}
+}
+
+// Prevent checkbox default + handle click on checkbox itself
+document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('click', function(e) {
+    e.stopPropagation();
+    this.closest('.check-item').classList.toggle('checked', this.checked);
+    saveChecks();
+  });
+});
+
+// Init
+loadChecks();
+updateSlide();
+</script>
+</body>
+</html>

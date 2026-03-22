@@ -740,6 +740,11 @@ body {
   background: var(--accent);
   flex-shrink: 0;
 }
+
+.place-link { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+.place-link:hover { color: var(--primary); }
+.qr-inline { display: inline-block; width: 50px; height: 50px; vertical-align: middle; margin-left: 6px; border-radius: 4px; border: 1px solid var(--border); }
+@media (max-width: 700px) { .qr-inline { width: 40px; height: 40px; } }
 </style>
 </head>
 <body>
@@ -765,7 +770,7 @@ body {
     <div class="overview-card">
       <div class="overview-icon">&#127976;</div>
       <div class="overview-label">숙소</div>
-      <div class="overview-value">풀만 시드니<br>하이드 파크</div>
+      <div class="overview-value">풀만 시드니<br><a href="https://www.google.com/maps/search/Hyde+Park+Sydney" target="_blank" class="place-link">하이드 파크</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Hyde+Park+Sydney" alt="QR" class="qr-inline"></div>
     </div>
     <div class="overview-card">
       <div class="overview-icon">&#127780;&#65039;</div>
@@ -982,7 +987,7 @@ body {
   </div>
 
   <div class="mart-card">
-    <h4>Thai Kee IGA</h4>
+    <h4><a href="https://www.google.com/maps/search/Thai+Kee+IGA+Haymarket+Sydney" target="_blank" class="place-link">Thai Kee IGA</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Thai+Kee+IGA+Haymarket+Sydney" alt="QR" class="qr-inline"></h4>
     <div class="mart-info">
       <div class="mart-detail"><strong>거리:</strong> 도보 12분</div>
       <div class="mart-detail"><strong>영업:</strong> 9am~8pm</div>
@@ -1104,7 +1109,7 @@ body {
     </div>
     <div class="timeline-item">
       <div class="timeline-time">11:00</div>
-      <div class="timeline-title">풀만 시드니 하이드파크 체크인</div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Pullman+Sydney+Hyde+Park" target="_blank" class="place-link">풀만 시드니 하이드파크 체크인</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Pullman+Sydney+Hyde+Park" alt="QR" class="qr-inline"></div>
       <div class="timeline-desc">짐 맡기고 출발 (얼리 체크인 시도)</div>
     </div>
     <div class="timeline-item meal">
@@ -1113,13 +1118,13 @@ body {
       <div class="restaurant-cards">
         <div class="resto-card recommended">
           <span class="resto-badge">추천</span>
-          <div class="resto-name">Bar Luca</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Bar+Luca+Sydney+CBD" target="_blank" class="place-link">Bar Luca</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Bar+Luca+Sydney+CBD" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$15~25/인</div>
           <div class="resto-note">수제 버거 맛집, 아이들도 좋아함</div>
         </div>
         <div class="resto-card">
           <span class="resto-alt-badge">대안</span>
-          <div class="resto-name">Pancakes on the Rocks</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Pancakes+on+the+Rocks+Sydney" target="_blank" class="place-link">Pancakes on the Rocks</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Pancakes+on+the+Rocks+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$12~22/인</div>
           <div class="resto-note">팬케이크, 아이 친화적</div>
         </div>
@@ -1127,22 +1132,22 @@ body {
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">13:30</div>
-      <div class="timeline-title">시드니 박물관 <span class="free-tag">무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Museum+of+Sydney" target="_blank" class="place-link">시드니 박물관</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Museum+of+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">무료</span></div>
       <div class="timeline-desc">호주 역사와 문화 전시</div>
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">14:30</div>
-      <div class="timeline-title">NSW 주립 도서관 <span class="free-tag">무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/State+Library+of+NSW+Sydney" target="_blank" class="place-link">NSW 주립 도서관</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/State+Library+of+NSW+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">무료</span></div>
       <div class="timeline-desc">아름다운 건축, 사진 스팟 (20~30분이면 충분)</div>
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">15:00</div>
-      <div class="timeline-title">로열 보타닉 가든 <span class="free-tag">무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Royal+Botanic+Garden+Sydney" target="_blank" class="place-link">로열 보타닉 가든</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Royal+Botanic+Garden+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">무료</span></div>
       <div class="timeline-desc">오페라하우스 배경 포토 스팟, 넓은 잔디밭에서 아이들 뛰어놀기</div>
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">17:00</div>
-      <div class="timeline-title">오페라 하우스 <span class="free-tag">외관 무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Sydney+Opera+House" target="_blank" class="place-link">오페라 하우스</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Sydney+Opera+House" alt="QR" class="qr-inline"> <span class="free-tag">외관 무료</span></div>
       <div class="timeline-desc">석양과 함께 감상, 기념 촬영</div>
     </div>
     <div class="timeline-item meal">
@@ -1151,13 +1156,13 @@ body {
       <div class="restaurant-cards">
         <div class="resto-card recommended">
           <span class="resto-badge">추천</span>
-          <div class="resto-name">Hurricane's Grill</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Hurricanes+Grill+Circular+Quay+Sydney" target="_blank" class="place-link">Hurricane's Grill</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Hurricanes+Grill+Circular+Quay+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$30~55/인</div>
           <div class="resto-note">립 전문, 서큘러키 뷰 <span class="reserve-tag">예약필수</span></div>
         </div>
         <div class="resto-card">
           <span class="resto-alt-badge">대안</span>
-          <div class="resto-name">Salt Meats Cheese</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Salt+Meats+Cheese+Circular+Quay+Sydney" target="_blank" class="place-link">Salt Meats Cheese</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Salt+Meats+Cheese+Circular+Quay+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$25~40/인</div>
           <div class="resto-note">이탈리안, 피자/파스타</div>
         </div>
@@ -1213,7 +1218,7 @@ body {
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">09:00</div>
-      <div class="timeline-title">호주 박물관 <span class="free-tag">무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Australian+Museum+Sydney" target="_blank" class="place-link">호주 박물관</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Australian+Museum+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">무료</span></div>
       <div class="timeline-desc">호텔에서 도보 5분! 공룡, 자연사 전시 &#8594; 아이들 최고</div>
     </div>
     <div class="timeline-item">
@@ -1223,7 +1228,7 @@ body {
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">11:30</div>
-      <div class="timeline-title">하이드 파크 <span class="free-tag">무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Hyde+Park+Sydney" target="_blank" class="place-link">하이드 파크</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Hyde+Park+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">무료</span></div>
       <div class="timeline-desc">ANZAC 전쟁 기념관, 분수대, 산책</div>
     </div>
     <div class="timeline-item meal">
@@ -1232,13 +1237,13 @@ body {
       <div class="restaurant-cards">
         <div class="resto-card recommended">
           <span class="resto-badge">추천</span>
-          <div class="resto-name">QVB 푸드코트</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Queen+Victoria+Building+Sydney" target="_blank" class="place-link">QVB 푸드코트</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Queen+Victoria+Building+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$12~18/인</div>
           <div class="resto-note">다양한 메뉴, 아이들 취향별 선택</div>
         </div>
         <div class="resto-card">
           <span class="resto-alt-badge">대안</span>
-          <div class="resto-name">Chat Thai</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Chat+Thai+Sydney" target="_blank" class="place-link">Chat Thai</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Chat+Thai+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$15~22/인</div>
           <div class="resto-note">태국 음식, 볶음면/볶음밥 인기</div>
         </div>
@@ -1263,13 +1268,13 @@ body {
       <div class="restaurant-cards">
         <div class="resto-card recommended">
           <span class="resto-badge">추천</span>
-          <div class="resto-name">Fratelli Fresh</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Fratelli+Fresh+Darling+Harbour+Sydney" target="_blank" class="place-link">Fratelli Fresh</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Fratelli+Fresh+Darling+Harbour+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$25~35/인</div>
           <div class="resto-note">이탈리안 <span class="free-tag">12세 이하 키즈 무료!</span></div>
         </div>
         <div class="resto-card">
           <span class="resto-alt-badge">대안</span>
-          <div class="resto-name">Noodle Face</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Noodle+Face+Darling+Quarter+Sydney" target="_blank" class="place-link">Noodle Face</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Noodle+Face+Darling+Quarter+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$12~20/인</div>
           <div class="resto-note">아시안 누들, 가성비 좋음</div>
         </div>
@@ -1323,7 +1328,7 @@ body {
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">10:30</div>
-      <div class="timeline-title">해양박물관 <span class="free-tag">기본전시 무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Australian+National+Maritime+Museum+Sydney" target="_blank" class="place-link">해양박물관</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Australian+National+Maritime+Museum+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">기본전시 무료</span></div>
       <div class="timeline-desc">배, 잠수함 전시, 아이들 체험 프로그램</div>
     </div>
     <div class="timeline-item meal">
@@ -1341,7 +1346,7 @@ body {
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">16:00</div>
-      <div class="timeline-title">패디스 마켓</div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/Paddys+Markets+Haymarket+Sydney" target="_blank" class="place-link">패디스 마켓</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Paddys+Markets+Haymarket+Sydney" alt="QR" class="qr-inline"></div>
       <div class="timeline-desc">기념품, 잡화 쇼핑</div>
     </div>
     <div class="timeline-item">
@@ -1355,13 +1360,13 @@ body {
       <div class="restaurant-cards">
         <div class="resto-card recommended">
           <span class="resto-badge">추천</span>
-          <div class="resto-name">Golden Century</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Golden+Century+Chinatown+Sydney" target="_blank" class="place-link">Golden Century</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Golden+Century+Chinatown+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$25~40/인</div>
           <div class="resto-note">10명 원탁 가능! 해산물 중식 <span class="reserve-tag">예약권장</span></div>
         </div>
         <div class="resto-card">
           <span class="resto-alt-badge">대안</span>
-          <div class="resto-name">Marigold</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Marigold+Restaurant+Chinatown+Sydney" target="_blank" class="place-link">Marigold</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Marigold+Restaurant+Chinatown+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$20~35/인</div>
           <div class="resto-note">딤섬 전문, 대가족 좌석 가능</div>
         </div>
@@ -1437,7 +1442,7 @@ body {
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">14:30</div>
-      <div class="timeline-title">MCA 현대미술관 <span class="free-tag">무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/MCA+Australia+Sydney" target="_blank" class="place-link">MCA 현대미술관</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/MCA+Australia+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">무료</span></div>
       <div class="timeline-desc">현대 미술 전시, 옥상 테라스 뷰</div>
     </div>
     <div class="timeline-item">
@@ -1451,13 +1456,13 @@ body {
       <div class="restaurant-cards">
         <div class="resto-card recommended">
           <span class="resto-badge">추천</span>
-          <div class="resto-name">Caminetto</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Caminetto+The+Rocks+Sydney" target="_blank" class="place-link">Caminetto</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Caminetto+The+Rocks+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$30~50/인</div>
           <div class="resto-note">이탈리안 고급 레스토랑 <span class="reserve-tag">예약필수</span></div>
         </div>
         <div class="resto-card">
           <span class="resto-alt-badge">대안</span>
-          <div class="resto-name">Winghaus</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/Winghaus+Circular+Quay+Sydney" target="_blank" class="place-link">Winghaus</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/Winghaus+Circular+Quay+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$20~30/인</div>
           <div class="resto-note">치킨 윙 전문, 캐주얼</div>
         </div>
@@ -1465,7 +1470,7 @@ body {
       <div style="margin-top:8px;">
         <div class="resto-card" style="max-width:calc(50% - 5px);">
           <span class="resto-alt-badge">대안 2</span>
-          <div class="resto-name">El Camino Cantina</div>
+          <div class="resto-name"><a href="https://www.google.com/maps/search/El+Camino+Cantina+The+Rocks+Sydney" target="_blank" class="place-link">El Camino Cantina</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/El+Camino+Cantina+The+Rocks+Sydney" alt="QR" class="qr-inline"></div>
           <div class="resto-price">$20~35/인</div>
           <div class="resto-note">멕시칸, 타코/부리또</div>
         </div>
@@ -1619,7 +1624,7 @@ body {
     </div>
     <div class="timeline-item attraction">
       <div class="timeline-time">09:30</div>
-      <div class="timeline-title">시드니 대학교 <span class="free-tag">무료</span></div>
+      <div class="timeline-title"><a href="https://www.google.com/maps/search/University+of+Sydney" target="_blank" class="place-link">시드니 대학교</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/University+of+Sydney" alt="QR" class="qr-inline"> <span class="free-tag">무료</span></div>
       <div class="timeline-desc">
         해리포터풍 쿼드랭글 시계탑 (334m)<br>
         캠퍼스 산책, 건축 감상
@@ -1861,7 +1866,7 @@ body {
   <div class="card">
     <ul class="booking-list">
       <li><strong>Hurricane's Grill</strong> &#8212; D2 저녁, 8명, 18:00</li>
-      <li><strong>씨라이프 아쿠아리움</strong> &#8212; D3 온라인 예매 (할인)</li>
+      <li><strong><a href="https://www.google.com/maps/search/SEA+LIFE+Sydney+Aquarium" target="_blank" class="place-link">씨라이프 아쿠아리움</a> <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://www.google.com/maps/search/SEA+LIFE+Sydney+Aquarium" alt="QR" class="qr-inline"></strong> &#8212; D3 온라인 예매 (할인)</li>
       <li><strong>Golden Century</strong> &#8212; D4 저녁, 8명, 18:30 (원탁 요청)</li>
       <li><strong>타롱가 동물원 콤보</strong> &#8212; D5 온라인 예매 (페리+입장)</li>
       <li><strong>Caminetto</strong> &#8212; D5 저녁, 8명, 17:00</li>

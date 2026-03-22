@@ -1933,46 +1933,60 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// Touch swipe support (improved for mobile)
-let touchStartX = 0;
-let touchStartY = 0;
-let touchStartTime = 0;
-let isSwiping = false;
+// ===== MOBILE SWIPE (robust) =====
+(function() {
+  let startX = 0, startY = 0, startTime = 0;
+  let dirLocked = null; // 'h' or 'v' or null
 
-document.addEventListener('touchstart', function(e) {
-  touchStartX = e.changedTouches[0].clientX;
-  touchStartY = e.changedTouches[0].clientY;
-  touchStartTime = Date.now();
-  isSwiping = false;
-}, { passive: true });
+  // Attach to each slide so we catch events inside scrollable areas
+  document.querySelectorAll('.slide').forEach(function(slide) {
 
-document.addEventListener('touchmove', function(e) {
-  if (!isSwiping) {
-    const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
-    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
-    // If horizontal movement is dominant, it's a swipe
-    if (dx > 10 && dx > dy * 1.5) {
-      isSwiping = true;
-    }
-  }
-}, { passive: true });
+    slide.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startTime = Date.now();
+      dirLocked = null;
+    }, { passive: true });
 
-document.addEventListener('touchend', function(e) {
-  const touchEndX = e.changedTouches[0].clientX;
-  const touchEndY = e.changedTouches[0].clientY;
-  const dx = touchStartX - touchEndX;
-  const dy = Math.abs(touchStartY - touchEndY);
-  const elapsed = Date.now() - touchStartTime;
+    slide.addEventListener('touchmove', function(e) {
+      if (dirLocked === 'v') return; // vertical scroll, don't interfere
 
-  // Only trigger slide change if:
-  // 1. Horizontal distance > 50px
-  // 2. Horizontal movement is greater than vertical (not scrolling)
-  // 3. Swipe completed within 500ms (intentional swipe)
-  if (Math.abs(dx) > 50 && Math.abs(dx) > dy * 1.2 && elapsed < 500) {
-    if (dx > 0) goSlide(1);   // swipe left = next
-    else goSlide(-1);          // swipe right = prev
-  }
-}, { passive: true });
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+
+      if (dirLocked === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+        // Lock direction on first significant movement
+        if (Math.abs(dx) > Math.abs(dy)) {
+          dirLocked = 'h';
+        } else {
+          dirLocked = 'v';
+          return;
+        }
+      }
+
+      if (dirLocked === 'h') {
+        // Prevent vertical scroll while swiping horizontally
+        e.preventDefault();
+      }
+    }, { passive: false }); // non-passive so we can preventDefault
+
+    slide.addEventListener('touchend', function(e) {
+      if (dirLocked !== 'h') return;
+
+      const endX = e.changedTouches[0].clientX;
+      const dx = startX - endX;
+      const elapsed = Date.now() - startTime;
+
+      // Swipe threshold: 40px minimum, within 600ms
+      if (Math.abs(dx) > 40 && elapsed < 600) {
+        if (dx > 0) goSlide(1);   // swipe left → next
+        else goSlide(-1);          // swipe right → prev
+      }
+
+      dirLocked = null;
+    }, { passive: true });
+  });
+})();
 
 // ===== SLIDES WRAPPER STYLE =====
 wrapper.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';

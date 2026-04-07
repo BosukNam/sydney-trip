@@ -2184,10 +2184,10 @@ body {
 
   <div class="card">
     <h3>&#128722; 장보기 &#183; Coles World Square</h3>
-    <p style="font-size:0.78rem; color:var(--text-light); margin-bottom:10px;">Store 710 &#183; 19:41 &#183; 카드결제 (VISA)</p>
+    <p style="font-size:0.78rem; color:var(--text-light); margin-bottom:10px;">Store 710 &#183; 19:41 &#183; 보석가족 결제 (VISA)</p>
     <p style="font-size:0.72rem; color:var(--text-light); margin-bottom:6px;">
-      <span style="display:inline-block; width:10px; height:10px; background:#FFE082; border-radius:50%; vertical-align:middle; margin-right:4px;"></span>
-      = N분의1 정산 대상 (추후 표시)
+      <span style="display:inline-block; width:10px; height:10px; background:#FFCA28; border-radius:50%; vertical-align:middle; margin-right:4px;"></span>
+      = N분의1 정산 대상
     </p>
     <table class="summary-table">
       <tr>
@@ -2220,8 +2220,8 @@ body {
         <td>-</td>
         <td style="color:#2E7D32;">-$2.50</td>
       </tr>
-      <tr>
-        <td>Nudie Nothing But Carrot 400ml</td>
+      <tr style="background:#FFF8E1;">
+        <td>&#128993; Nudie Nothing But Carrot 400ml</td>
         <td>2</td>
         <td>$9.00</td>
       </tr>
@@ -2230,13 +2230,13 @@ body {
         <td>1</td>
         <td>$4.00</td>
       </tr>
-      <tr>
-        <td>Imperfect Pears 1.5kg</td>
+      <tr style="background:#FFF8E1;">
+        <td>&#128993; Imperfect Pears 1.5kg</td>
         <td>1</td>
         <td>$4.90</td>
       </tr>
-      <tr>
-        <td>Red Grapes (1.080kg @ $5.50/kg)</td>
+      <tr style="background:#FFF8E1;">
+        <td>&#128993; Red Grapes (1.080kg @ $5.50/kg)</td>
         <td>1</td>
         <td>$5.94</td>
       </tr>
@@ -2254,24 +2254,76 @@ body {
   <div class="card" style="background:#FFF8E1; border-color:#FFCA28;">
     <h3 style="color:#F57F17;">&#129534; N분의1 정산 항목</h3>
     <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:10px;">
-      여러 가족이 함께 쓰는 공용 품목. 여행 끝나고 인원수로 나눠서 정산 예정.
+      3가정(<strong>보석</strong>·<strong>반석</strong>·<strong>부모님</strong>) 공용 품목. 결제자에게 송금 정산.
     </p>
     <table class="summary-table">
       <tr>
-        <th>날짜</th>
         <th>항목</th>
         <th>금액</th>
+        <th>분할</th>
+        <th>1인당</th>
       </tr>
       <tr>
-        <td colspan="3" style="text-align:center; color:var(--text-light); font-style:italic; padding:14px;">
-          정산 대상 품목 지정 대기 중
-        </td>
+        <td>Nudie 당근주스 ×2<br><span style="font-size:0.7rem; color:var(--text-light);">4/7 Coles</span></td>
+        <td>$9.00</td>
+        <td>보석·반석<br><span style="font-size:0.7rem;">(1/2)</span></td>
+        <td>$4.50</td>
+      </tr>
+      <tr>
+        <td>Imperfect Pears 1.5kg<br><span style="font-size:0.7rem; color:var(--text-light);">4/7 Coles</span></td>
+        <td>$4.90</td>
+        <td>보석·반석·부모님<br><span style="font-size:0.7rem;">(1/3)</span></td>
+        <td>$1.63</td>
+      </tr>
+      <tr>
+        <td>Red Grapes 1.08kg<br><span style="font-size:0.7rem; color:var(--text-light);">4/7 Coles</span></td>
+        <td>$5.94</td>
+        <td>보석·반석·부모님<br><span style="font-size:0.7rem;">(1/3)</span></td>
+        <td>$1.98</td>
       </tr>
       <tr class="grand-total">
-        <td colspan="2">정산 대상 합계</td>
-        <td><strong>$0.00</strong></td>
+        <td>정산 대상 합계</td>
+        <td colspan="3"><strong>$19.84</strong></td>
       </tr>
     </table>
+  </div>
+
+  <!-- 가족별 정산 요약 -->
+  <div class="card" style="background:#E3F2FD; border-color:#42A5F5;">
+    <h3 style="color:#1565C0;">&#128176; 가족별 정산 (보석가족 결제 기준)</h3>
+    <table class="summary-table">
+      <tr>
+        <th>가정</th>
+        <th>당근주스</th>
+        <th>배</th>
+        <th>포도</th>
+        <th>합계</th>
+      </tr>
+      <tr>
+        <td><strong>보석가족</strong><br><span style="font-size:0.7rem; color:var(--text-light);">(결제자)</span></td>
+        <td>$4.50</td>
+        <td>$1.63</td>
+        <td>$1.98</td>
+        <td style="font-weight:700;">$8.11</td>
+      </tr>
+      <tr>
+        <td><strong>반석가족</strong><br><span style="font-size:0.7rem; color:#D32F2F;">→ 보석에 송금</span></td>
+        <td>$4.50</td>
+        <td>$1.63</td>
+        <td>$1.98</td>
+        <td style="font-weight:700; color:#D32F2F;">$8.11</td>
+      </tr>
+      <tr>
+        <td><strong>부모님</strong><br><span style="font-size:0.7rem; color:#D32F2F;">→ 보석에 송금</span></td>
+        <td>-</td>
+        <td>$1.64</td>
+        <td>$1.98</td>
+        <td style="font-weight:700; color:#D32F2F;">$3.62</td>
+      </tr>
+    </table>
+    <p style="font-size:0.75rem; color:var(--text-light); margin-top:10px;">
+      * 배 $4.90 ÷ 3 = $1.633 (반올림으로 부모님 $1.64). 여행 종료 시 일괄 정산.
+    </p>
   </div>
 
   <!-- 누적 합계 -->

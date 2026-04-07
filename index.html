@@ -2122,19 +2122,100 @@ body {
 </div>
 </div>
 
+<!-- ==================== SLIDE 14: 실제 사용내역 ==================== -->
+<div class="slide" id="slide-14">
+<div class="slide-inner">
+  <div class="slide-header">
+    <h1>&#129534; 실제 사용내역</h1>
+    <div class="subtitle">현지 영수증 기반 실시간 지출 기록 (AUD)</div>
+  </div>
+
+  <!-- D2 4/7(화) -->
+  <div class="section-title">&#128197; D2 &#183; 4/7(화)</div>
+
+  <div class="card">
+    <h3>&#127837; 점심 &#183; Marko's Thai Restaurant</h3>
+    <p style="font-size:0.78rem; color:var(--text-light); margin-bottom:10px;">Table 17 &#183; 13:24 &#183; 카드결제</p>
+    <table class="summary-table">
+      <tr>
+        <th>메뉴</th>
+        <th>수량</th>
+        <th>금액</th>
+      </tr>
+      <tr>
+        <td>Gai Yang (Marko's Grilled Chicken) Full</td>
+        <td>1</td>
+        <td>$39.50</td>
+      </tr>
+      <tr>
+        <td>Pad Thai (Chicken, little spicy)</td>
+        <td>1</td>
+        <td>$17.00</td>
+      </tr>
+      <tr>
+        <td>Pad See Ew (GF,V) Beef</td>
+        <td>1</td>
+        <td>$17.00</td>
+      </tr>
+      <tr>
+        <td>Thai Fried Rice (GF,V) Tofu &amp; Veggie</td>
+        <td>1</td>
+        <td>$16.50</td>
+      </tr>
+      <tr>
+        <td>Pad See Ew (GF,V) Prawn</td>
+        <td>1</td>
+        <td>$20.50</td>
+      </tr>
+      <tr>
+        <td style="color:var(--text-light); font-size:0.82rem;">Card Surcharge</td>
+        <td>1</td>
+        <td style="color:var(--text-light);">$1.22</td>
+      </tr>
+      <tr class="grand-total">
+        <td colspan="2">합계</td>
+        <td><strong>$111.72</strong></td>
+      </tr>
+    </table>
+    <p style="font-size:0.75rem; color:var(--text-light); margin-top:10px;">
+      &#8776; &#8361;100,548 (1 AUD &#8776; &#8361;900 기준)
+    </p>
+  </div>
+
+  <!-- 누적 합계 -->
+  <div class="card" style="background:var(--cost-bg); border-color:#66BB6A;">
+    <h3 style="color:var(--cost-header);">&#128202; 누적 사용액</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+      <div style="text-align:center; padding:14px; background:white; border-radius:10px;">
+        <div style="font-size:1.8rem; font-weight:900; color:var(--primary);">$111.72</div>
+        <div style="font-size:0.78rem; color:var(--text-light);">AUD 누적 지출</div>
+      </div>
+      <div style="text-align:center; padding:14px; background:white; border-radius:10px;">
+        <div style="font-size:1.8rem; font-weight:900; color:var(--primary);">~&#8361;100,548</div>
+        <div style="font-size:0.78rem; color:var(--text-light);">원화 환산</div>
+      </div>
+    </div>
+    <p style="font-size:0.75rem; color:var(--text-light); margin-top:12px; text-align:center;">
+      * 영수증 수신될 때마다 업데이트됩니다
+    </p>
+  </div>
+
+</div>
+</div>
+
 </div><!-- end slides-wrapper -->
 
 <!-- ===== NAVIGATION ===== -->
 <div class="nav-arrows">
   <button class="nav-btn" id="prevBtn" onclick="goSlide(-1)" aria-label="이전">&#9664; 이전</button>
-  <span class="slide-indicator" id="slideIndicator">1 / 13</span>
+  <span class="slide-indicator" id="slideIndicator">1 / 14</span>
   <button class="nav-btn" id="nextBtn" onclick="goSlide(1)" aria-label="다음">다음 &#9654;</button>
 </div>
 
 <script>
 // ===== SLIDE NAVIGATION =====
 let currentSlide = 0;
-const totalSlides = 13;
+const totalSlides = 14;
 const wrapper = document.getElementById('slidesWrapper');
 const indicator = document.getElementById('slideIndicator');
 const prevBtn = document.getElementById('prevBtn');

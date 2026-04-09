@@ -745,9 +745,45 @@ body {
 .place-link:hover { color: var(--primary); }
 .qr-inline { display: inline-block; width: 50px; height: 50px; vertical-align: middle; margin-left: 6px; border-radius: 4px; border: 1px solid var(--border); }
 @media (max-width: 700px) { .qr-inline { width: 40px; height: 40px; } }
+
+/* ===== PASSWORD OVERLAY ===== */
+#pw-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(27,58,45,0.97);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 20px;
+}
+#pw-overlay h2 { color: #fff; font-size: 1.4rem; }
+#pw-overlay input {
+  font-size: 1.5rem; letter-spacing: 0.4em;
+  text-align: center; padding: 12px 24px;
+  border-radius: 12px; border: 2px solid #4CAF7D;
+  width: 200px; outline: none;
+}
+#pw-overlay button {
+  background: #4CAF7D; color: #fff;
+  border: none; border-radius: 10px;
+  padding: 12px 32px; font-size: 1rem;
+  cursor: pointer; font-weight: 700;
+}
+#pw-overlay button:disabled { background: #666; cursor: not-allowed; }
+#pw-msg { color: #FF6B6B; font-size: 0.9rem; min-height: 1.2em; }
+#pw-cooldown { color: #FFD54F; font-size: 0.9rem; }
 </style>
 </head>
 <body>
+
+<!-- ===== PASSWORD OVERLAY ===== -->
+<div id="pw-overlay">
+  <div style="font-size:2.5rem;">🔐</div>
+  <h2>시드니 여행 가이드</h2>
+  <p style="color:#ccc;font-size:0.85rem;">암호를 입력하세요</p>
+  <input type="password" id="pw-input" maxlength="10" placeholder="••••" autofocus>
+  <button id="pw-btn" onclick="checkPassword()">확인</button>
+  <div id="pw-msg"></div>
+  <div id="pw-cooldown"></div>
+</div>
 
 <div class="slides-wrapper" id="slidesWrapper">
 
@@ -2531,6 +2567,88 @@ body {
 </div>
 
 <script>
+// ===== PASSWORD PROTECTION =====
+(function() {
+  const CORRECT = '0406';
+  const LS_KEY = 'sydney_trip_auth';
+  const FAIL_KEY = 'sydney_trip_fails';
+  const COOLDOWN_KEY = 'sydney_trip_cooldown';
+  const MAX_FAILS = 3;
+  const COOLDOWN_MS = 15 * 60 * 1000;
+
+  const overlay = document.getElementById('pw-overlay');
+  const input = document.getElementById('pw-input');
+  const btn = document.getElementById('pw-btn');
+  const msg = document.getElementById('pw-msg');
+  const cooldownEl = document.getElementById('pw-cooldown');
+
+  // 이미 인증된 경우 바로 숨김
+  if (localStorage.getItem(LS_KEY) === 'ok') {
+    overlay.style.display = 'none';
+    return;
+  }
+
+  // 쿨타임 체크
+  function getCooldownRemaining() {
+    const end = parseInt(localStorage.getItem(COOLDOWN_KEY) || '0');
+    return Math.max(0, end - Date.now());
+  }
+
+  function startCooldownTimer() {
+    btn.disabled = true;
+    input.disabled = true;
+    const interval = setInterval(() => {
+      const rem = getCooldownRemaining();
+      if (rem <= 0) {
+        clearInterval(interval);
+        localStorage.setItem(FAIL_KEY, '0');
+        localStorage.removeItem(COOLDOWN_KEY);
+        btn.disabled = false;
+        input.disabled = false;
+        msg.textContent = '';
+        cooldownEl.textContent = '';
+      } else {
+        const m = Math.floor(rem / 60000);
+        const s = Math.floor((rem % 60000) / 1000);
+        cooldownEl.textContent = `⏳ ${m}분 ${s}초 후 재시도 가능`;
+      }
+    }, 1000);
+  }
+
+  // 초기 쿨타임 확인
+  if (getCooldownRemaining() > 0) {
+    msg.textContent = '3회 실패로 잠시 잠겼습니다.';
+    startCooldownTimer();
+  }
+
+  window.checkPassword = function() {
+    if (getCooldownRemaining() > 0) return;
+    const val = input.value.trim();
+    if (val === CORRECT) {
+      localStorage.setItem(LS_KEY, 'ok');
+      localStorage.setItem(FAIL_KEY, '0');
+      overlay.style.display = 'none';
+    } else {
+      let fails = parseInt(localStorage.getItem(FAIL_KEY) || '0') + 1;
+      localStorage.setItem(FAIL_KEY, fails);
+      if (fails >= MAX_FAILS) {
+        localStorage.setItem(COOLDOWN_KEY, Date.now() + COOLDOWN_MS);
+        msg.textContent = '3회 실패! 15분 후 재시도 가능합니다.';
+        startCooldownTimer();
+      } else {
+        msg.textContent = `❌ 틀렸습니다. (${fails}/${MAX_FAILS}회 실패)`;
+      }
+      input.value = '';
+      input.focus();
+    }
+  };
+
+  // Enter 키 지원
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') window.checkPassword();
+  });
+})();
+
 // ===== SLIDE NAVIGATION =====
 let currentSlide = 0;
 const totalSlides = 14;
